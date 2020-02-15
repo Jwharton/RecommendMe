@@ -25,7 +25,7 @@ public class APIController {
     @GetMapping
         public String displaySearchResults(Model model) {
 
-            model.addAttribute("movies", apiService.searchByKeyword("dog", apiKey));
+            model.addAttribute("movies", apiService.searchByKeyword("sun", apiKey));
             return "movie_search"; //view
         }
 }
