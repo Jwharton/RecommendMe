@@ -30,7 +30,8 @@ public class MovieService implements APIService {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public List<Movie> searchByKeyword(String keyword, String apiKey) {
+    @Override
+       public List<Movie> searchByKeyword(String keyword, String apiKey) {
         setApiKey(apiKey);
         String url = String.format("https://api.themoviedb.org/3/search/movie?api_key=%1s&language=en-US&query=%2s&page=1&include_adult=false", apiKey, keyword);
         return new JSONMovieFormatter().formatJSON(this.restTemplate.getForObject(url, String.class));
