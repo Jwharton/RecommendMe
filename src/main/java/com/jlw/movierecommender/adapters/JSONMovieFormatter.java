@@ -1,7 +1,7 @@
 package com.jlw.movierecommender.adapters;
 
-import com.jlw.movierecommender.model.Media;
 import com.jlw.movierecommender.model.Movie;
+import com.jlw.movierecommender.utilities.DateParser;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,7 +24,7 @@ public class JSONMovieFormatter implements JSONFormattable {
             JSONObject res = (JSONObject) searchResults.get(i);
             String title = (String) res.get("title");
             String overview = (String) res.get("overview");
-            String releaseDate = (String) res.get("release_date");
+            String releaseDate = DateParser.parseISODateToMMDDYYYY((String)res.get("release_date"));
 
             Movie movie = new Movie(title, overview, releaseDate);
 
