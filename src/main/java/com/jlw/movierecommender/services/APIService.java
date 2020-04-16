@@ -1,13 +1,14 @@
 package com.jlw.movierecommender.services;
 
-import com.jlw.movierecommender.model.Movie;
+import com.jlw.movierecommender.restapis.model.Media;
+import com.jlw.movierecommender.restapis.model.Movie;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public interface APIService {
+public interface APIService<T> {
 
-    List<Movie> searchByKeyword(String name, String apiKey);
+    <T extends Media> List<T> searchByKeyword(String keyWord);
 
 }

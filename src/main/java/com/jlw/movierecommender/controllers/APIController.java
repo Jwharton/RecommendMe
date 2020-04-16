@@ -1,30 +1,40 @@
 package com.jlw.movierecommender.controllers;
 
+import com.jlw.movierecommender.restapis.model.MediaSearchResult;
+import com.jlw.movierecommender.restapis.model.Search;
 import com.jlw.movierecommender.services.APIService;
 import com.jlw.movierecommender.utilities.PropertyFileReader;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @Controller
-@RequestMapping(value={"", "/","home","index","welcome"})
 public class APIController {
 
-    private final static String PROPERTY_FILE_PATH = "./passwords.properties";
-    private final static String PROPERTY_API_KEY_KEY = "apiKey";
+    private  APIService apiService;
+    private  MediaSearchResult mediaSearchResult;
 
-    private APIService apiService;
-    private String apiKey = new PropertyFileReader(PROPERTY_FILE_PATH).getPropertyValue(PROPERTY_API_KEY_KEY);
-
-    public APIController(APIService apiService) {
+    public APIController(APIService apiService, MediaSearchResult mediaSearchResult) {
         this.apiService = apiService;
+        this.mediaSearchResult = mediaSearchResult;
     }
 
-    @GetMapping
-        public String displaySearchResults(Model model) {
 
-            model.addAttribute("movies", apiService.searchByKeyword("rush", apiKey));
-            return "movie_search"; //view
-        }
+    @GetMapping(value="")
+    public String searchResult(Model model){
+        model.addAttribute("search", new Search());
+        model.addAttribute("movies", mediaSearchResult.getResults());
+        return "index";
+    }
+
+    @PostMapping(value ="")
+    public String displaySearchResults(Search searchObj) {
+
+        mediaSearchResult.setResults(apiService.searchByKeyword(searchObj.getKeyword()));
+        return "redirect:/";
+    }
+
 }
