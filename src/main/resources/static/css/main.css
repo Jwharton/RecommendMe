@@ -1,8 +1,11 @@
-.main-title{
+#main-title{
     font-family: 'Sriracha', cursive;
-    padding: 25px 0px 25px 0px;
 }
 
 .movie-search-bar {
     padding: 25px 0px 25px 0px;
+}
+
+#main-nav {
+    background-color: #e3f2fd;
 }

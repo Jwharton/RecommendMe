@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<head>
+    <title>Movie Recommender App</title>
+</head>
+<body>
+<header>
+    <meta charset="UTF-8">
+    <nav class="navbar navbar-expand-xl navbar-light" id="main-nav">
+        <a class="navbar-brand" id="main-title" href="/index"><h2>Movie Recommender App</h2></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li><a class="nav-link" href="#">Movie Recommender</a></li>
+                <li><a class="nav-link" href="#">Link</a></li>
+            </ul>
+                <form class="form-inline my-2 my-lg-0" action="" th:action="@{/movieKeywordSearch.html}" th:object="${search}"  method="get">
+                    <label class="sr-only" for="inlineFormTitleKeyword">Movie Title Keyword</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormTitleKeyword" placeholder="Title Keyword" th:field="*{keyword}"/>
+                    <button type="submit" class="btn btn-primary mb-2" value="Submit">Search Movies</button>
+                </form>
+        </div>
+    </nav>
+</header>
+</body>
+</html>
