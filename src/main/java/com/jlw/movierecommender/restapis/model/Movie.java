@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -18,7 +21,7 @@ public class Movie extends Media implements Serializable {
     @JsonProperty
     private String title;
     @JsonProperty
-    private String release_date;
+    private LocalDate release_date;
     @JsonProperty
     private String overview;
 
@@ -39,10 +42,10 @@ public class Movie extends Media implements Serializable {
     }
 
     public String getRelease_date() {
-        return release_date;
+        return release_date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
     }
 
-    public void setRelease_date(String release_date) {
+    public void setRelease_date(LocalDate release_date) {
         this.release_date = release_date;
     }
 
