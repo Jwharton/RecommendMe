@@ -1,6 +1,6 @@
 package com.jlw.movierecommender.restapis.model;
 
-public class Search {
+public class Keyword {
 
         private String keyword;
 

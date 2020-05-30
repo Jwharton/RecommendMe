@@ -5,7 +5,7 @@ import com.jlw.movierecommender.restapis.model.Movie;
 
 import java.util.List;
 
-public interface SearchRepository {
+public interface Search {
 
     <T extends Media> List<Movie> getSearchResultsByKeyword(String keyword);
 }

@@ -9,9 +9,9 @@
     <title>Movie Search Results</title>
 </head>
 <body>
-<header th:insert="fragments/header.html :: header"> </header>
+<header th:insert="header.html :: header"> </header>
 <br>
-<h3 id="search-result-header">Results for "<span th:text="${search.getKeyword()}"></span>"</h3>
+<h3 id="search-result-header">Results for "<span th:text="${keyword.getKeyword()}"></span>"</h3>
 <br>
 <div class="col">
     <div th:if="${not #lists.isEmpty(movies)}">

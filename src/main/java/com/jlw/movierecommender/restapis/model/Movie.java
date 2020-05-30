@@ -42,7 +42,7 @@ public class Movie extends Media implements Serializable {
     }
 
     public String getRelease_date() {
-        return release_date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
+        return null == release_date ? "" : release_date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
     }
 
     public void setRelease_date(LocalDate release_date) {
