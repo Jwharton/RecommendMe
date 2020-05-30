@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../static/css/main.css">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+
     <title>Movie Recommender App</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
                 <li><a class="nav-link" href="#">Movie Recommender</a></li>
                 <li><a class="nav-link" href="#">Link</a></li>
             </ul>
-                <form class="form-inline my-2 my-lg-0" action="" th:action="@{/search}" th:object="${keyword}" method="get">
+                <form class="form-inline my-2 my-lg-0" action="" th:action="@{/movieSearch}" th:object="${keyword}" method="get">
                     <label class="sr-only" for="inlineFormTitleKeyword">Movie Title Keyword</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormTitleKeyword" placeholder="Title Keyword" th:field="*{keyword}"/>
                     <button type="submit" class="btn btn-primary mb-2" value="Submit">Search Movies</button>

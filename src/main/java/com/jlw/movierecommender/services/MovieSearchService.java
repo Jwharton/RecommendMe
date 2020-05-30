@@ -1,6 +1,5 @@
 package com.jlw.movierecommender.services;
 
-import com.jlw.movierecommender.repository.MovieSearch;
 import com.jlw.movierecommender.restapis.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;

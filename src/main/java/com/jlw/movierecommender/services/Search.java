@@ -1,4 +1,4 @@
-package com.jlw.movierecommender.repository;
+package com.jlw.movierecommender.services;
 
 import com.jlw.movierecommender.restapis.model.Media;
 import com.jlw.movierecommender.restapis.model.Movie;

@@ -1,6 +1,5 @@
 package com.jlw.movierecommender.controllers;
 
-import com.jlw.movierecommender.restapis.model.Media;
 import com.jlw.movierecommender.restapis.model.MediaSearchResult;
 import com.jlw.movierecommender.restapis.model.Keyword;
 import com.jlw.movierecommender.restapis.model.Movie;
@@ -31,13 +30,13 @@ public class MovieSearchController {
      * @param model
      * @return
      */
-    @GetMapping({"/search"})
+    @GetMapping({"/movieSearch"})
     public String movieTitleKeywordSearch(@ModelAttribute Keyword keywordObj, Model model) {
 
             mediaSearchResult.setResults(apiService.searchByKeyword(keywordObj.getKeyword()));
             model.addAttribute("movies", mediaSearchResult.getResults());
 
-        return "search";
+        return "movieSearch";
     }
 
 }

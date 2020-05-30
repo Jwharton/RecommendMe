@@ -1,18 +1,16 @@
-package com.jlw.movierecommender.repository;
+package com.jlw.movierecommender.services;
 
 import com.jlw.movierecommender.restapis.model.Movie;
 import com.jlw.movierecommender.restapis.model.MovieSearchResult;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-@Component
+@Service
 @PropertySources({
         @PropertySource("passwords.properties"),
         @PropertySource("api_config.properties")
@@ -30,9 +28,16 @@ public class MovieSearch implements Search{
     @Override
     public List<Movie> getSearchResultsByKeyword(String keyword) {
         RestTemplate restTemplate = new RestTemplate();
-        MovieSearchResult response  = restTemplate.getForObject(String.format(
-                movieAPI, apiKey, keyword), MovieSearchResult.class);
+        int defaultPageNum = 1;
+        MovieSearchResult initialResponse  = restTemplate.getForObject(String.format(
+                movieAPI, apiKey, keyword, defaultPageNum), MovieSearchResult.class);
 
-        return response.getResults();
+        if(initialResponse.getTotal_pages() > 1) {
+            for (int i = 2; i < initialResponse.getTotal_pages(); i++) {
+                initialResponse.addAdditionalPageResults(restTemplate.getForObject(String.format(
+                        movieAPI, apiKey, keyword, i), MovieSearchResult.class).getResults());
+            }
+        }
+        return initialResponse.getResults();
     }
 }
