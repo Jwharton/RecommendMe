@@ -34,7 +34,7 @@ public class MovieSearchController {
     public String movieTitleKeywordSearch(@ModelAttribute Keyword keywordObj, Model model) {
 
             mediaSearchResult.setResults(apiService.searchByKeyword(keywordObj.getKeyword()));
-            model.addAttribute("movies", mediaSearchResult.getResults());
+            model.addAttribute("movies", mediaSearchResult.getSortedDescResults());
 
         return "movieSearch";
     }

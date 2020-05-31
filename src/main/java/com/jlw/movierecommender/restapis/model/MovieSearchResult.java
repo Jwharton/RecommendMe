@@ -5,7 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -44,5 +47,15 @@ public class MovieSearchResult implements Serializable, MediaSearchResult<Movie>
 
     public void addAdditionalPageResults(List<Movie> additionalResults){
         results.addAll(additionalResults);
+    }
+
+    public void sortResultsDesc(){
+       results = results.stream().sorted((Comparator.comparing(Movie::getReleaseLocalDate,
+               Comparator.nullsLast(Comparator.reverseOrder())
+       ))).collect(Collectors.toList());
+    }
+    public List<Movie> getSortedDescResults() {
+        sortResultsDesc();
+        return results;
     }
 }

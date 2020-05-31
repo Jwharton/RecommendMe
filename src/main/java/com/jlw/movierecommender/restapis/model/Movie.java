@@ -45,6 +45,10 @@ public class Movie extends Media implements Serializable {
         return null == release_date ? "" : release_date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
     }
 
+    public LocalDate getReleaseLocalDate() {
+        return release_date;
+    }
+
     public void setRelease_date(LocalDate release_date) {
         this.release_date = release_date;
     }
